@@ -24,6 +24,25 @@ export default defineConfig({
           content: "",
           backgroundColor: "rgba(0,0,0,0)",
         },
+        ".grad": {
+          background: "#0F2027",
+        },
+        ".filters": {
+          background:
+            "-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)",
+        },
+        ".colors": {
+          background: "linear-gradient(to right, #2C5364, #203A43, #0F2027)",
+        },
+        ".grad-2": {
+          background: "#000000",
+        },
+        ".deep": {
+          background: "-webkit-linear-gradient(to bottom, #434343, #000000)",
+        },
+        ".space": {
+          background: "linear-gradient(to bottom, #434343, #000000)",
+        },
       };
       addComponents(stretched);
     }),

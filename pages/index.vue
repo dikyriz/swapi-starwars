@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black">
+  <div class="grad-2 deep space">
     <div
       class="relative flex flex-col items-top justify-center min-h-screen sm:items-center sm:pt-0"
       h-20

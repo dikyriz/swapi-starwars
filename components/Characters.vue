@@ -1,11 +1,14 @@
 <template lang="">
-  <div v-if="!$apollo.loading" class="xl:px-20 px-6">
-    <div class="my-4 mx-[auto] text-center">
+  <div
+    v-if="!$apollo.loading"
+    class="xl:px-20 px-6 grad filters colors min-h-screen"
+  >
+    <div class="py-4 mx-[auto] text-center">
       <nuxt-link
         to="/"
-        class="min-w-20 border-pink-600 border-2 py-1 px-4 text-center rounded shadow-md cursor-pointer group"
+        class="min-w-20 border-pink-600 hover:border-white border-2 py-1 px-4 text-center rounded shadow-md cursor-pointer group"
       >
-        <span class="text-pink-400 group-hover:text-pink-600"> Home </span>
+        <span class="text-pink-400 group-hover:text-white"> Home </span>
       </nuxt-link>
     </div>
     <div>
@@ -24,12 +27,12 @@
         Next
       </button>
     </div>
-    <div class="grid xl:grid-cols-5 gap-4 my-5">
+    <div class="grid xl:grid-cols-5 gap-4 py-5">
       <div v-for="(character, index) in slicedPeople" :key="index">
         <div class="px-16 lg:px-0">
           <NuxtLink
             :to="{ name: 'character-id', params: { id: character.id } }"
-            class="xl:min-h-56 min-h-52 flex flex-col bg-gradient-to-b from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative font-poppins"
+            class="xl:min-h-56 min-h-52 flex flex-col bg-gradient-to-b from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-lg shadow-pink-800 py-3 relative font-poppins"
             ><h1
               class="text-2xl text-white font-medium font-mono mt-2 text-center px-5"
             >
