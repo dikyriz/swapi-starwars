@@ -9,7 +9,7 @@
       </nuxt-link>
     </div>
     <div>
-      <button
+      <!-- <button
         @click="prevPage"
         :disabled="currentPage === 1"
         class="bg-pink-500 px-2 rounded text-white hover:text-pink-300"
@@ -22,14 +22,15 @@
         class="bg-pink-500 px-2 rounded text-white hover:text-pink-300"
       >
         Next
-      </button>
+      </button> -->
     </div>
     <div class="grid grid-cols-5 gap-4 my-5">
-      <div v-for="(character, index) in slicedPeople" :key="index">
+      <!-- <div v-for="(character, index) in slicedPeople" :key="index"> -->
+      <div v-for="character in allPeople.people" :key="index">
         <div>
           <NuxtLink
             :to="{ name: 'character-id', params: { id: character.id } }"
-            class="min-h-48 flex flex-col bg-gradient-to-br from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative font-poppins"
+            class="min-h-48 flex flex-col bg-gradient-to-b from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative font-poppins"
             ><h1
               class="text-2xl text-pink-800 font-bold font-mono mt-2 text-center px-5"
             >
@@ -54,6 +55,9 @@
 </template>
 <script lang="ts">
 import gql from "graphql-tag";
+import { defineComponent } from "vue";
+import { Context } from "@nuxt/types";
+import { print } from "graphql/language/printer";
 const ALL_CHARACTERS_QUERY = gql`
   query ALL_CHARACTERS_QUERY {
     allPeople {
@@ -86,7 +90,7 @@ interface QueryResponse {
   allPeople: AllPeople;
 }
 
-export default {
+export default defineComponent({
   apollo: {
     allPeople: {
       query: ALL_CHARACTERS_QUERY,
@@ -95,7 +99,7 @@ export default {
   data(): {
     limit: number;
     currentPage: number;
-    allPeople: any;
+    allPeople?: any;
     $apollo: any;
   } {
     return {
@@ -105,16 +109,39 @@ export default {
       $apollo: "",
     };
   },
-  computed: {
-    totalPages(): number {
-      return Math.ceil(this.allPeople.people.length / this.limit);
-    },
-    slicedPeople(): Array<{ name: string }> {
-      const start = (this.currentPage - 1) * this.limit;
-      const end = start + this.limit;
-      return this.allPeople.people.slice(start, end);
-    },
-  },
+
+  // async asyncData({ app }: Context): Promise<QueryResponse> {
+  //   // const client = app.apolloProvider.defaultClient;
+  //   // console.log(client);
+  //   // const res = await client.query({
+  //   //   query: ALL_CHARACTERS_QUERY,
+  //   //   prefetch: true,
+  //   // });
+  //   const { data } = await app.$hasura({
+  //     query: print(ALL_CHARACTERS_QUERY),
+  //   });
+  //   // console.log(data);
+  //   return {
+  //     allPeople: data.people,
+  //   };
+
+  //   // const { people } = res.data;
+  //   // return {
+  //   //   allPeople: people,
+  //   // };
+  // },
+  // computed: {
+  //   totalPages(): number {
+  //     let x = this.allPeople;
+  //     console.log(x);
+  //     return Math.ceil(x.people.length / this.limit);
+  //   },
+  //   slicedPeople(): Array<{ name: string }> {
+  //     const start = (this.currentPage - 1) * this.limit;
+  //     const end = start + this.limit;
+  //     return this.allPeople.people.slice(start, end);
+  //   },
+  // },
   mounted() {
     this.allPeople = this.$apollo.data.allPeople.people;
 
@@ -126,17 +153,16 @@ export default {
       console.log("Data not found in local storage");
     }
   },
-  updated() {
-    localStorage.setItem("allPeople", JSON.stringify(this.allPeople));
-    console.log(this.allPeople);
-  },
-  methods: {
-    prevPage(): void {
-      this.currentPage--;
-    },
-    nextPage(): void {
-      this.currentPage++;
-    },
-  },
-};
+  // updated() {
+  //   localStorage.setItem("allPeople", JSON.stringify(this.allPeople));
+  // },
+  // methods: {
+  //   prevPage(): void {
+  //     this.currentPage--;
+  //   },
+  //   nextPage(): void {
+  //     this.currentPage++;
+  //   },
+  // },
+});
 </script>

@@ -13,7 +13,7 @@
         <div>
           <NuxtLink
             :to="{ name: 'film-id', params: { id: film.id } }"
-            class="w-96 flex min-h-80 flex-col bg-gradient-to-br from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative"
+            class="w-96 flex min-h-80 flex-col bg-gradient-to-b from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative"
           >
             <h1 class="text-4xl text-pink-800 bold font-mono px-10 mt-2 mb-6">
               {{ film.title }}
@@ -59,7 +59,8 @@
 </template>
 <script lang="ts">
 import gql from "graphql-tag";
-
+import Vue from "vue";
+import { Context } from "@nuxt/types";
 const ALL_FILMS_QUERY = gql`
   query ALL_FILMS_QUERY {
     allFilms {
@@ -77,11 +78,10 @@ const ALL_FILMS_QUERY = gql`
 `;
 
 interface Film {
-  title: string;
-  director: string;
+  allFilms: any;
 }
 
-export default {
+export default Vue.extend({
   data(): {
     name: string;
     allFilms: any;
@@ -96,11 +96,24 @@ export default {
     };
   },
 
-  apollo: {
-    allFilms: {
+  // apollo: {
+  //   allFilms: {
+  //     query: ALL_FILMS_QUERY,
+  //     prefetch: true,
+  //   },
+  // },
+
+  async asyncData({ app }: Context): Promise<Film> {
+    const client = app.apolloProvider.defaultClient;
+    const res = await client.query({
       query: ALL_FILMS_QUERY,
-      prefetch: true,
-    },
+    });
+    console.log(res);
+    const { films } = res.data;
+
+    return {
+      allFilms: films,
+    };
   },
   created() {
     const films = JSON.parse(localStorage.getItem("allFilms") || "[]");
@@ -128,5 +141,5 @@ export default {
   updated() {
     localStorage.setItem("allFilms", JSON.stringify(this.allFilms));
   },
-};
+});
 </script>

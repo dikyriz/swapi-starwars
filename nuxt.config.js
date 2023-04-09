@@ -57,7 +57,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/apollo", "@nuxtjs/composition-api/module"],
+  modules: ["@nuxtjs/apollo", "@nuxtjs/composition-api/module", "@nuxt/http"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

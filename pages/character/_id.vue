@@ -126,6 +126,7 @@ export default {
         personId,
       },
     });
+    console.log(res);
 
     const { person } = res.data;
 
