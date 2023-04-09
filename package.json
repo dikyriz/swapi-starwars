@@ -1,0 +1,29 @@
+{
+  "name": "test-case",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.5",
+    "@nuxtjs/composition-api": "^0.33.1",
+    "apollo-client": "^2.6.10",
+    "buffer": "^6.0.3",
+    "core-js": "3.25.3",
+    "graphql-tag": "^2.12.6",
+    "graphql-ws": "^5.12.1",
+    "nuxt": "2.15.8",
+    "vue-apollo": "^3.1.0",
+    "vue-property-decorator": "^9.1.2",
+    "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.15.8",
+    "@nuxt/typescript-build": "^2.1.0",
+    "nuxt-windicss": "^2.6.0"
+  }
+}
