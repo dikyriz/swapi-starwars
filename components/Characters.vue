@@ -9,7 +9,7 @@
       </nuxt-link>
     </div>
     <div>
-      <!-- <button
+      <button
         @click="prevPage"
         :disabled="currentPage === 1"
         class="bg-pink-500 px-2 rounded text-white hover:text-pink-300"
@@ -22,11 +22,11 @@
         class="bg-pink-500 px-2 rounded text-white hover:text-pink-300"
       >
         Next
-      </button> -->
+      </button>
     </div>
     <div class="grid grid-cols-5 gap-4 my-5">
-      <!-- <div v-for="(character, index) in slicedPeople" :key="index"> -->
-      <div v-for="character in allPeople.people" :key="index">
+      <div v-for="(character, index) in slicedPeople" :key="index">
+        <!-- <div v-for="character in allPeople.people" :key="index"> -->
         <div>
           <NuxtLink
             :to="{ name: 'character-id', params: { id: character.id } }"
@@ -130,18 +130,18 @@ export default defineComponent({
   //   //   allPeople: people,
   //   // };
   // },
-  // computed: {
-  //   totalPages(): number {
-  //     let x = this.allPeople;
-  //     console.log(x);
-  //     return Math.ceil(x.people.length / this.limit);
-  //   },
-  //   slicedPeople(): Array<{ name: string }> {
-  //     const start = (this.currentPage - 1) * this.limit;
-  //     const end = start + this.limit;
-  //     return this.allPeople.people.slice(start, end);
-  //   },
-  // },
+  computed: {
+    totalPages(): number {
+      let x = this.allPeople;
+      console.log(x);
+      return Math.ceil(x.people.length / this.limit);
+    },
+    slicedPeople(): Array<{ name: string }> {
+      const start = (this.currentPage - 1) * this.limit;
+      const end = start + this.limit;
+      return this.allPeople.people.slice(start, end);
+    },
+  },
   mounted() {
     this.allPeople = this.$apollo.data.allPeople.people;
 
@@ -153,16 +153,16 @@ export default defineComponent({
       console.log("Data not found in local storage");
     }
   },
-  // updated() {
-  //   localStorage.setItem("allPeople", JSON.stringify(this.allPeople));
-  // },
-  // methods: {
-  //   prevPage(): void {
-  //     this.currentPage--;
-  //   },
-  //   nextPage(): void {
-  //     this.currentPage++;
-  //   },
-  // },
+  updated() {
+    localStorage.setItem("allPeople", JSON.stringify(this.allPeople));
+  },
+  methods: {
+    prevPage(): void {
+      this.currentPage--;
+    },
+    nextPage(): void {
+      this.currentPage++;
+    },
+  },
 });
 </script>

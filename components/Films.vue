@@ -59,7 +59,8 @@
 </template>
 <script lang="ts">
 import gql from "graphql-tag";
-import Vue from "vue";
+// import Vue from "vue";
+import { defineComponent } from "vue";
 import { Context } from "@nuxt/types";
 const ALL_FILMS_QUERY = gql`
   query ALL_FILMS_QUERY {
@@ -81,7 +82,7 @@ interface Film {
   allFilms: any;
 }
 
-export default Vue.extend({
+export default defineComponent({
   data(): {
     name: string;
     allFilms: any;
@@ -96,25 +97,25 @@ export default Vue.extend({
     };
   },
 
-  // apollo: {
-  //   allFilms: {
-  //     query: ALL_FILMS_QUERY,
-  //     prefetch: true,
-  //   },
-  // },
-
-  async asyncData({ app }: Context): Promise<Film> {
-    const client = app.apolloProvider.defaultClient;
-    const res = await client.query({
+  apollo: {
+    allFilms: {
       query: ALL_FILMS_QUERY,
-    });
-    console.log(res);
-    const { films } = res.data;
-
-    return {
-      allFilms: films,
-    };
+      prefetch: true,
+    },
   },
+
+  // async asyncData({ app }: Context): Promise<Film> {
+  //   const client = app.apolloProvider.defaultClient;
+  //   const res = await client.query({
+  //     query: ALL_FILMS_QUERY,
+  //   });
+  //   console.log(res);
+  //   const { films } = res.data;
+
+  //   return {
+  //     allFilms: films,
+  //   };
+  // },
   created() {
     const films = JSON.parse(localStorage.getItem("allFilms") || "[]");
     if (Array.isArray(films)) {
