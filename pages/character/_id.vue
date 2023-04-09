@@ -11,10 +11,12 @@
           <span class="text-pink-400 group-hover:text-pink-600"> Back </span>
         </nuxt-link>
       </div>
-      <h1 class="font-mono text-4xl text-pink-600 mb-3">{{ person.name }}</h1>
-      <div class="grid grid-cols-3 gap-4">
+      <h1 class="font-mono text-4xl text-pink-600 mb-3 mx-[auto] lg:mx-0">
+        {{ person.name }}
+      </h1>
+      <div class="grid xl:grid-cols-3 gap-4 px-6">
         <div
-          class="bg-white shadow-pink-500 rounded shadow w-96 font-poppins text-center pb-2"
+          class="bg-white shadow-pink-500 rounded shadow xl:w-96 font-poppins text-center pb-2 col-span-2 xl:col-span-1"
         >
           <div class="bg-pink-400 rounded-t mb-2">
             <span class="font-semibold text-lg text-white pl-2">Gender</span>
@@ -22,7 +24,7 @@
           <h3 class="text-lg uppercase font-semibold">{{ person.gender }}</h3>
         </div>
         <div
-          class="bg-white shadow-pink-500 rounded shadow w-96 font-poppins text-center pb-2 col-span-2"
+          class="bg-white shadow-pink-500 rounded shadow xl:w-96 font-poppins text-center pb-2 col-span-2"
         >
           <div class="bg-pink-400 rounded-t mb-2">
             <span class="font-semibold text-lg text-white pl-2"
@@ -34,7 +36,7 @@
           </p>
         </div>
         <div
-          class="bg-white shadow-pink-500 rounded shadow w-96 font-poppins text-center pb-2 col-span-2"
+          class="bg-white shadow-pink-500 rounded shadow xl:w-96 font-poppins text-center pb-2 col-span-2"
         >
           <div class="bg-pink-400 rounded-t mb-2">
             <span class="font-semibold text-lg text-white pl-2"
@@ -46,7 +48,7 @@
           </p>
         </div>
         <div
-          class="bg-white shadow-pink-500 rounded shadow w-96 font-poppins text-center pb-2"
+          class="bg-white shadow-pink-500 rounded shadow xl:w-96 font-poppins text-center pb-2"
         >
           <div class="bg-pink-400 rounded-t mb-2">
             <span class="font-semibold text-lg text-white pl-2">Eye Color</span>
@@ -56,7 +58,7 @@
           </p>
         </div>
         <div
-          class="bg-white shadow-pink-500 rounded shadow w-96 font-poppins text-center pb-2"
+          class="bg-white shadow-pink-500 rounded shadow xl:w-96 font-poppins text-center pb-2"
         >
           <div class="bg-pink-400 rounded-t mb-2">
             <span class="font-semibold text-lg text-white pl-2">Mass</span>
@@ -66,7 +68,7 @@
           </p>
         </div>
         <div
-          class="bg-white shadow-pink-500 rounded shadow w-96 font-poppins text-center pb-2"
+          class="bg-white shadow-pink-500 rounded shadow xl:w-96 font-poppins text-center pb-2"
         >
           <div class="bg-pink-400 rounded-t mb-2">
             <span class="font-semibold text-lg text-white pl-2">Height</span>
@@ -76,7 +78,7 @@
           </p>
         </div>
         <div
-          class="bg-white shadow-pink-500 rounded shadow w-96 font-poppins text-center pb-2"
+          class="bg-white shadow-pink-500 rounded shadow xl:w-96 font-poppins text-center pb-2"
         >
           <div class="bg-pink-400 rounded-t mb-2">
             <span class="font-semibold text-lg text-white pl-2">BirthYear</span>

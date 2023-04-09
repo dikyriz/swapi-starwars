@@ -5,11 +5,11 @@
       h-20
     >
       <h1
-        class="text-8xl text-black text-stroke-pink-500 text-stroke-3 dark:text-white font-semibold mb-2 text-shadow-md"
+        class="2xl:text-8xl text-black text-stroke-pink-500 text-stroke-3 dark:text-white font-semibold mb-2 text-shadow-md text-7xl mx-[auto] 2xl:mx-0"
       >
         StarWars
       </h1>
-      <header class="mt-6 flex gap-x-4">
+      <header class="mt-6 flex gap-x-4 mx-[auto] 2xl:mx-0">
         <nuxt-link
           to="/films"
           class="min-w-20 border-pink-600 border-2 py-2 px-4 text-center rounded shadow-md shadow-pink-800 cursor-pointer group"

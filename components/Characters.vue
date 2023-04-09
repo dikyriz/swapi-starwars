@@ -1,5 +1,5 @@
 <template lang="">
-  <div v-if="!$apollo.loading" class="px-20">
+  <div v-if="!$apollo.loading" class="xl:px-20 px-6">
     <div class="my-4 mx-[auto] text-center">
       <nuxt-link
         to="/"
@@ -24,23 +24,25 @@
         Next
       </button>
     </div>
-    <div class="grid grid-cols-5 gap-4 my-5">
+    <div class="grid xl:grid-cols-5 gap-4 my-5">
       <div v-for="(character, index) in slicedPeople" :key="index">
-        <!-- <div v-for="character in allPeople.people" :key="index"> -->
-        <div>
+        <div class="px-16 lg:px-0">
           <NuxtLink
             :to="{ name: 'character-id', params: { id: character.id } }"
-            class="min-h-48 flex flex-col bg-gradient-to-b from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative font-poppins"
+            class="xl:min-h-56 min-h-52 flex flex-col bg-gradient-to-b from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative font-poppins"
             ><h1
-              class="text-2xl text-pink-800 font-bold font-mono mt-2 text-center px-5"
+              class="text-2xl text-white font-medium font-mono mt-2 text-center px-5"
             >
               {{ character.name }}
             </h1>
-            <span class="text-center uppercase text-xs font-medium">{{
-              character.gender
-            }}</span>
+            <div class="bg-slate-800 rounded w-[fit-content] mx-[auto] px-3">
+              <span
+                class="text-center uppercase text-xs font-medium text-white"
+                >{{ character.gender }}</span
+              >
+            </div>
             <div
-              class="flex mt-5 items-center border h-[fit-content] w-[fit-content] text-xs mx-[auto] border-pink-400 rounded-l-md rounded-r pr-2 text-pink-300"
+              class="flex mt-5 items-center border h-[fit-content] w-[fit-content] text-xs mx-[auto] border-pink-400 rounded-l-md rounded-r pr-2 text-white absolute bottom-4 left-0 right-0"
             >
               <span class="bg-pink-400 px-2 rounded text-white py-1 mr-2"
                 >Planets</span
@@ -109,27 +111,6 @@ export default defineComponent({
       $apollo: "",
     };
   },
-
-  // async asyncData({ app }: Context): Promise<QueryResponse> {
-  //   // const client = app.apolloProvider.defaultClient;
-  //   // console.log(client);
-  //   // const res = await client.query({
-  //   //   query: ALL_CHARACTERS_QUERY,
-  //   //   prefetch: true,
-  //   // });
-  //   const { data } = await app.$hasura({
-  //     query: print(ALL_CHARACTERS_QUERY),
-  //   });
-  //   // console.log(data);
-  //   return {
-  //     allPeople: data.people,
-  //   };
-
-  //   // const { people } = res.data;
-  //   // return {
-  //   //   allPeople: people,
-  //   // };
-  // },
   computed: {
     totalPages(): number {
       let x = this.allPeople;

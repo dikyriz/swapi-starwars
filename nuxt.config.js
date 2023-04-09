@@ -7,7 +7,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
 
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // Global page headers: https://gjs.dev/config-head
   head: {
     title: "test-case",
     htmlAttrs: {
@@ -57,7 +57,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/apollo", "@nuxtjs/composition-api/module", "@nuxt/http"],
+  modules: ["@nuxtjs/apollo", "@nuxtjs/composition-api/module"],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

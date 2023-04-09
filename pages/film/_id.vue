@@ -9,10 +9,10 @@
       </nuxt-link>
     </div>
     <div
-      class="ml-72 mt-20 bg-pink-500/30 py-4 pl-5 rounded-l border-pink-600 border-2 border-r-0 border-opacity-30 relative"
+      class="xl:ml-72 mt-20 bg-pink-500/30 py-4 pl-5 rounded-l border-pink-600 border-2 border-r-0 border-opacity-30 relative"
     >
       <h1
-        class="text-5xl absolute -top-8 bg-pink-400 px-2 rounded shadow-md font-semibold text-pink-200 font-inter"
+        class="xl:text-5xl text-2xl absolute xl:-top-8 -top-6 bg-pink-400 px-2 rounded shadow-md font-semibold text-pink-200 font-inter"
       >
         {{ film.title }}
       </h1>
@@ -49,9 +49,9 @@
         {{ film.episodeID }}
       </div>
       <div
-        class="mt-4 mr-52 font-poppins bg-white rounded border-4 border-pink-700 border-opacity-30"
+        class="mt-4 xl:mr-52 font-poppins bg-white rounded border-4 border-pink-700 border-opacity-30"
       >
-        <div class="bg-pink-400">
+        <div class="bg-pink-400 shadow">
           <span class="font-semibold text-lg text-white pl-2">Description</span>
         </div>
         <p

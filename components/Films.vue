@@ -1,5 +1,5 @@
 <template lang="">
-  <div v-if="!$apollo.loading" class="px-20 mb-3">
+  <div v-if="!$apollo.loading" class="xl:px-28 mb-3 px-6">
     <div class="my-4 mx-[auto] text-center">
       <nuxt-link
         to="/"
@@ -8,14 +8,16 @@
         <span class="text-pink-400 group-hover:text-pink-600"> Home </span>
       </nuxt-link>
     </div>
-    <div class="grid grid-cols-3 gap-8 text-center justify-items-center">
+    <div class="grid xl:grid-cols-3 gap-y-8 text-center justify-items-center">
       <div v-for="film in allFilms.films" :key="film.id">
         <div>
           <NuxtLink
             :to="{ name: 'film-id', params: { id: film.id } }"
-            class="w-96 flex min-h-80 flex-col bg-gradient-to-b from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative"
+            class="xl:w-80 w-[327px] flex min-h-80 flex-col bg-gradient-to-b from-pink-500 via-slate-600 to-slate-700 hover:bg-pink-400 bg-gradient-to-t rounded shadow-md shadow-pink-800 py-3 relative"
           >
-            <h1 class="text-4xl text-pink-800 bold font-mono px-10 mt-2 mb-6">
+            <h1
+              class="text-4xl text-white font-medium font-mono px-10 mt-2 mb-6"
+            >
               {{ film.title }}
             </h1>
             <span
@@ -44,7 +46,7 @@
               </div>
             </span>
             <div
-              class="flex mt-3 items-center border h-[fit-content] w-[fit-content] text-xs mx-[auto] border-pink-400 rounded-l-md rounded-r pr-2 text-pink-300"
+              class="flex mt-3 items-center border h-[fit-content] w-[fit-content] text-xs mx-[auto] border-pink-400 rounded-l-md rounded-r pr-2 text-white"
             >
               <span class="bg-pink-400 px-2 rounded text-white py-1 mr-2">
                 Director
@@ -59,7 +61,6 @@
 </template>
 <script lang="ts">
 import gql from "graphql-tag";
-// import Vue from "vue";
 import { defineComponent } from "vue";
 import { Context } from "@nuxt/types";
 const ALL_FILMS_QUERY = gql`
@@ -103,19 +104,6 @@ export default defineComponent({
       prefetch: true,
     },
   },
-
-  // async asyncData({ app }: Context): Promise<Film> {
-  //   const client = app.apolloProvider.defaultClient;
-  //   const res = await client.query({
-  //     query: ALL_FILMS_QUERY,
-  //   });
-  //   console.log(res);
-  //   const { films } = res.data;
-
-  //   return {
-  //     allFilms: films,
-  //   };
-  // },
   created() {
     const films = JSON.parse(localStorage.getItem("allFilms") || "[]");
     if (Array.isArray(films)) {
